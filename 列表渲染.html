@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>列表渲染</title>
+		<script src="vue.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			<div v-for="(item,index,key) of userinfo" >{{key}}--{{item}}--{{index}}</div>
+		</div>
+		<script type="text/javascript">
+			var vm=new Vue({
+				el:"#app",
+				data:{
+					//数组
+//					list:[{
+//						id:'001',
+//						text:'hello'
+//					},{
+//						id:'002',
+//						text:'world!'
+//					},{
+//						id:'003',
+//						text:'tangjie'
+//					}]
+					//对象
+					userinfo:{
+						name:'tang',
+						sex:'male',
+						age:'24'
+					}
+				}
+			})
+		</script>
+	</body>
+</html>
