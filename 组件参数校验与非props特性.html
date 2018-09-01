@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>组件参数校验与非props特性</title>
+		<script src="vue.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			<child content="h !"></child>
+		</div>
+		<script type="text/javascript">
+			Vue.component('child',{
+//				props:{
+//					content:{
+//						type:String,
+////						required:false,
+////						default:'默认显示'
+//					//借助validator配置项写更复杂的校验，
+//					validator:function(value){
+//						return (value.length>5)
+//					}
+//					},
+//				},
+				template:'<h1 content="h !">hello</h1>'
+			})//不能有标点符号
+			var vm=new Vue({
+				el:'#app',
+			})
+		</script>
+	</body>
+</html>

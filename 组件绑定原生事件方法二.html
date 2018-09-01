@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>组件绑定原生事件方法二</title>
+		<script src="vue.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			<child @click.native='fatherclick'></child>
+		</div>
+		<script type="text/javascript">
+			Vue.component('child',{
+				template:'<div>hello world</div>'
+			})
+			var vm=new Vue({
+				el:"#app",
+				methods:{
+					fatherclick:function(){
+						alert('fatherClick')
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

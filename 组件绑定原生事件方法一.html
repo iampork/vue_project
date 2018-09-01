@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>组件绑定原生事件</title>
+		<script src="vue.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			<child @click='fatherclick'></child>
+		</div>
+		<script type="text/javascript">
+			Vue.component('child',{
+				template:'<div @click="sonclick">Child</div>',
+				methods:{
+					sonclick:function (){
+						alert('sonclick')
+						this.$emit('click')
+					}
+				}
+			})
+			var vm=new Vue({
+				el:'#app',
+				methods:{
+					fatherclick:function(){
+						alert('fatherclick');//原生js里用分号
+					},
+				},
+			})
+		</script>
+	</body>
+</html>
