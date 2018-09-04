@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>非父子组件传值(bus/总线模式/发布订阅模式)</title>
+		<script src="vue.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			<child content='tang'></child>
+			<child content='jie'></child>
+		</div>
+		<script type="text/javascript">
+			Vue.prototype.bus=new Vue(), 
+			Vue.component('child',{
+				data:function(){
+					return{
+						selfcontent:this.content
+					}
+				},
+				props:{
+					content:String
+				},
+				template:'<div @click="handclick">{{selfcontent}}</div>',
+				methods:{
+					handclick:function() {
+						this.bus.$emit('change',this.selfcontent)
+					}
+				},
+				mounted:function(){
+					var this_=this 
+					this.bus.$on('change',function(msg){
+						this_.selfcontent=msg
+					})
+				}
+			})
+			var vm=new Vue({
+				el:"#app"
+			})
+		</script>
+	</body>
+</html>
